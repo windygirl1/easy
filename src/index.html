@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap" rel="stylesheet">
+    <title>EasyChords</title>
+    <style>
+      body {
+    color: #343434;
+}
+.background {
+    top: -3px;
+    bottom: -298px;
+    left: 0;
+    right: -48px;
+    overflow: hidden;
+    position: fixed;
+}
+.background1 {
+    background-size: cover;
+    background-position: 50%;
+    content: "";
+    width: calc(100vw + 80px);
+    height: calc(100vh + 80px);
+    position: absolute;
+    left: -40px;
+    top: -40px;
+    filter: blur(10px);
+    background-color: #060607;
+}
+.background3 {
+    width: calc(100vw + 80px);
+    height: calc(100vh + 80px);
+    position: absolute;
+    left: -40px;
+    top: -40px;
+    opacity: .4;
+} 
+.cover {
+    text-align: center;
+    background-color: rgb(41 41 44);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    overflow: hidden;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 2px 10px 6px 0 #00ff00;
+}
+#title {
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 50px;
+    color: #6b6c72;
+    text-align: center;
+}
+#titel {
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 50px;
+    color: #343434;
+    text-align: left;
+}
+.start {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: inline-block;
+    transform: translate( 0px, 10em);
+    font-size: 25px;
+    background-color: rgb(77 77 82);
+    border-radius: 6px;
+    box-shadow: 2px 5px 6px 0 #00ff00; 
+    cursor: pointer;
+    color: #29292c;
+}
+.description {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: inherit;
+    color: #6b6c72;
+}
+.contents {
+    text-align: center;
+    position: relative;
+    background-color: #060607;
+}
+.text {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    height: 200px;
+    width: 1000px;
+    left: 20%;
+    top: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #343434;
+}
+.chords {
+    position: relative;
+    min-height: 200px;
+    min-width: 259px;
+    width: 75%;
+    left: 103px;
+    top: -19px;
+    background-color: rgb(41 41 44);
+    box-shadow: 2px 10px 6px 0 #00ff00;
+    color: #6b6c72;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 6px;
+    float: left;
+    overflow: hidden;
+    max-width: 100%;
+}
+.photo {
+    padding-left: 350px;
+    padding-top: 50px;
+}
+.compilation {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    height: 479px;
+    width: 92px;
+    margin-top: -19px;
+    border-radius: 6px;
+    background-color: rgb(41 41 44);
+    position: absolute;
+    box-shadow: 2px 10px 6px 0 #00ff00;
+    color: #616166;
+    position: fixed;
+    z-index: 101;
+    clear: both;
+}
+.chordsa {
+    display: inline-block;
+    transform: translate(0em, 1em);
+    cursor: pointer;
+}
+.chordsc {
+    display: inline-block;
+    transform: translate(0em, 2em);
+    cursor: pointer;
+}
+.chordsd {
+    display: inline-block;
+    transform: translate(0em, 3em);
+    cursor: pointer;
+}
+.chordse {
+    display: inline-block;
+    transform: translate(0em, 4em);
+    cursor: pointer;
+}
+.chordsf {
+    display: inline-block;
+    transform: translate(0em, 5em);
+    cursor: pointer;
+}
+.chordsg {
+    display: inline-block;
+    transform: translate(0em, 6em);
+    cursor: pointer;
+}
+.chordsh {
+    display: inline-block;
+    transform: translate(0em, 7em);
+    cursor: pointer;
+}
+.slider {
+    display: none;
+}
+.show {
+    display: block;
+}
+.active {
+    color: #95949d;
+}
+.hide {
+    display: none;
+}
+.A {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.C {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: 4px;
+    margin-bottom: 46px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.D {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: -12px;
+    margin-bottom: 62px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.E {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: -28px;
+    margin-bottom: 78px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.F {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: -44px;
+    margin-bottom: 94px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.G {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: -60px;
+    margin-bottom: 110px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.H {
+    margin-left: 2.3%;
+    box-shadow: 0 1px 0 1px #393b3b36;
+    margin-top: -76px;
+    margin-bottom: 126px;
+    max-width: 95%;
+    height: auto;
+    max-height: 90%
+}
+.pretheory {
+    text-align: center;
+}
+.theory {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+    </style>
+</head>
+<body>
+   <div class="background">
+    <div class="background1">
+      <div class="background3">
+      </div>  
+    </div>
+   </div>
+   <div class="cover">
+     <h1 id="title"> EasyChords </h1> 
+     <h2 class="description"> EasyChords — это сервис, который помогает юным музыкантам обучиться основным и не только аккродам</h2>
+     <span class="start"> Приступить </span>
+   </div>
+   <div class="contents hide">
+     <h1 id="titel"> EasyChords </h1>
+   </div>
+   <div class="compilation hide">
+       <span data-slider="chordsa" class="chordsa"> Аккорды A (Ля) </span>
+       <span data-slider="chordsc" class="chordsc"> Аккорды C (До) </span>
+       <span data-slider="chordsd" class="chordsd"> Аккорды D (Ре) </span>
+       <span data-slider="chordse" class="chordse"> Аккорды E (Ми) </span>
+       <span data-slider="chordsf" class="chordsf"> Аккорды F (Фа) </span>
+       <span data-slider="chordsg" class="chordsg"> Аккорды G (Соль) </span>
+       <span data-slider="chordsh" class="chordsh"> Аккорды H/B (Си)</span>
+   </div>
+   <div class="chords hide">
+     <div class="pretheory">
+       <span class="theory"> Аккорд - это несколько различных по высоте звуков (более двух) воспроизводимых одновременно. Исключение - аккорды power или квинты, состоящие из 2-х нот (обозначаются добавлением к названию цифры 5, например, A5, E5, C5 и т.д.). </span>
+     </div>
+     <div class="chordsa slider">
+       <div class="adaption">
+         <img src="/fotos/A/Ля мажор.webp" alt="" class="A">
+         <img src="/fotos/A/Ля-минор.webp" alt="" class="A">
+         <img src="/fotos/A/A+.webp" alt="" class="A">
+         <img src="/fotos/A/Adez.webp" alt="" class="A">
+         <img src="/fotos/A/Amaj7.webp" alt="" class="A">
+         <img src="/fotos/A/Asus4.webp" alt="" class="A">
+         <img src="/fotos/A/А6.webp" alt="" class="A">
+         <img src="/fotos/A/Am6.webp" alt="" class="A">
+         <img src="/fotos/A/А7.webp" alt="" class="A">
+         <img src="/fotos/A/Am7.webp" alt="" class="A">
+         <img src="/fotos/A/Adez7.webp" alt="" class="A">
+         <img src="/fotos/A/Adim7.webp" alt="" class="A">
+         <img src="/fotos/A/А7sus4.webp" alt="" class="A">
+         <img src="/fotos/A/А7-6.webp" alt="" class="A">
+         <img src="/fotos/A/A9.webp" alt="" class="A">
+         <img src="/fotos/A/Am9.webp" alt="" class="A">
+       </div>
+     </div>
+     <div class="chordsc slider">
+      <div>
+        <img src="/fotos/C/AnyConv.com__До мажор.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__До минор.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__С+.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Сdez.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdezm.webp" alt="" class="C">
+        <img src="/fotos/C/Cdez+.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cmaj7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Сdezmaj7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Csus4.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdezsus4.webp" alt="" class="C">
+        <img src="/fotos/C/C6.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cm6.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdez6.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdezm6.webp" alt="" class="C">
+        <img src="/fotos/C/C7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cm7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Сdez7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdezm7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdim7.webp" alt="" class="C">
+        <img src="/fotos/C/Cdezdim7.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__С7sus4.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdez7sus4.webp" alt="" class="C">
+        <img src="/fotos/C/C7-6.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdez7-6.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__C9.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cm9.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdez9.webp" alt="" class="C">
+        <img src="/fotos/C/AnyConv.com__Cdezm9.webp" alt="" class="C">
+      </div>
+     </div>
+     <div class="chordsd slider">
+      <div>
+        <img src="/fotos/D/Ре мажор.webp" alt="" class="D">
+        <img src="/fotos/D/Ре_минор.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D+.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezm.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez+.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Dmaj7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezmaj7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddim.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezdim.webp" alt="" class="D">
+        <img src="/fotos/D/Dsus4.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezsus4.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Dm6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezm6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Dm7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezm7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddim7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezdim7.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D7sus4.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez7sus4.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D7-6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez7-6.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__D9.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Dm9.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddez9.webp" alt="" class="D">
+        <img src="/fotos/D/AnyConv.com__Ddezm9.webp" alt="" class="D">
+      </div>
+     </div>
+     <div class="chordse slider">
+      <div>
+        <img src="/fotos/E/AnyConv.com__Ми мажор.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Ми минор.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E+.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Emaj7.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Edim.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Esus4.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E6.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Em6.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E7.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Em7.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Edim7.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E7sus4.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E7-6.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__E9.webp" alt="" class="E">
+        <img src="/fotos/E/AnyConv.com__Em9.webp" alt="" class="E">
+      </div>
+     </div>
+     <div class="chordsf slider">
+      <div>
+        <img src="/fotos/F/AnyConv.com__Фа мажор.webp" alt="" class="F"> 
+        <img src="/fotos/F/AnyConv.com__Фа минор.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F+.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezm.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez+.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fmaj7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezmaj7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdim.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezdim.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fsus4.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezsus4.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fm6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezm6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fm7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezm7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdim7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezdim7.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F7sus4.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez7sus4.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F7-6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez7-6.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__F9.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fm9.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdez9.webp" alt="" class="F">
+        <img src="/fotos/F/AnyConv.com__Fdezm9.webp" alt="" class="F">
+      </div>
+     </div>
+     <div class="chordsg slider">
+      <div>
+        <img src="/fotos/G/AnyConv.com__Соль мажор.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Соль минор.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G+.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez+.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gmaj7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezmaj7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdim.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezdim.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gsus4.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezsus4.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gm6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezm6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gm7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezm7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdim7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezdim7.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G7sus4.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez7sus4.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G7-6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez7-6.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__G9.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gm9.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdez9.webp" alt="" class="G">
+        <img src="/fotos/G/AnyConv.com__Gdezm9.webp" alt="" class="G">
+      </div>
+     </div>
+     <div class="chordsh slider">
+      <div>
+        <img src="/fotos/H/AnyConv.com__Си мажор.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Си минор.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H+.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbm.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb+.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hmaj7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbmaj7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hdim.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbdim.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hsus4.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbsus4.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hm6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbm6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hm7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb7.webp" alt=""  class="H">
+        <img src="/fotos/H/AnyConv.com__Hbm7.webp" alt=""  class="H">
+        <img src="/fotos/H/AnyConv.com__Hdim7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbdim7.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H7sus4.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb7sus4.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H7-6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb7-6.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__H9.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hm9.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hb9.webp" alt="" class="H">
+        <img src="/fotos/H/AnyConv.com__Hbm9.webp" alt="" class="H">
+      </div>
+     </div>
+   </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</body>
+</html>
